@@ -318,6 +318,8 @@ class PetView(NSView):
 
     def mouseMoved_(self, event):
         loc  = self.convertPoint_fromView_(event.locationInWindow(), None)
+        self.idleSince  = time.time()
+        self.idleWarned = False
         prev = self.hoveredBtn
         self.hoveredBtn = self.btnHit(loc)
         if self.hoveredBtn >= 0:
